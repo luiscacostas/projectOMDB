@@ -1,0 +1,10 @@
+doctype html
+html
+    head
+        title Home
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        h1 #{msj}
+        form(action="/film" method="POST")
+            input(type="text" name="title" placeholder="Enter movie title")
+            button(type="submit") Search

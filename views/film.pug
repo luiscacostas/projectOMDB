@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/css/style.css")
+        title Films
+    body
+        include ./header.pug
+        main
+            h1 Información de película
+            section
+                if film
+                    h2= film.Title
+                    img(src=film.Poster, alt=film.Title)
+                    p= film.Year
+                    p= film.Released
+                    p= film.Rated
+                    p= film.Actors
+                    p= film.Director
+                    
+                else
+                    p#dataFilmApi
+                    p#message #{error}
+        include ./footer.pug
