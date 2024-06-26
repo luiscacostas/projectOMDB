@@ -6,7 +6,9 @@ const getHome = (req, res) => {
 };
 
 const getFilm = async (req, res) => {
-    const { title } = req.body;
+    const title  = req.params.title;
+    console.log('******');
+    console.log(req.params.title)
     try {
         const response = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&t=${title}`);
         const data = await response.json();
@@ -21,7 +23,18 @@ const getFilm = async (req, res) => {
     }
 };
 
+const postFilm = async (req, res) => {
+    const {title} = req.body;
+    if(title){
+        res.redirect(`/film/${title}`)
+    }else{
+        res.status(404).render("film.pug", { film: null, error: "Película no encontrada" });
+    }
+    
+}
+
 module.exports = {
     getHome,
-    getFilm
+    getFilm,
+    postFilm
 };
